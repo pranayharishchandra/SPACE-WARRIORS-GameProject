@@ -8,8 +8,10 @@ screen = pygame.display.set_mode((800, 600)) #TWO BRACKETS HERE
 
 #TITEL AND ICON
 pygame.display.set_caption('Space Warriors')#use 32*32 for icons
-# icon = pygame.image.load('spaceship_icon_32bits.png')
-# pygame.display.set_icon(icon)
+icon = pygame.image.load('spaceship_icon_32bits.png')
+pygame.display.set_icon(icon)
+
+'''place icon in the same folder where freecodecampgame.py is ... (don't put this inside some new folder )'''
 
 
 #GAME LOOP
@@ -26,6 +28,7 @@ while running: #this loop exits when closed button is pressed
         if event.type ==pygame.QUIT:#MAKE SURE YOU WRITE QUIT IN CAPITAL LETTERS
             running = False
             
-
-
+    #        RED GREEN BLUE -- these values goes from zero to 255
+    screen.fill((255,0,0))
+    pygame.display.update()
 
