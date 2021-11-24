@@ -24,9 +24,9 @@ playerY_change = 0
 # ADDING ALIEN
 alien_image = pygame.image.load('aliens.png')  # don't forget to write png here
 alienX = random.randint(0,736)
-alienY = 10
-alienX_change = 0
-alienY_change = 0
+alienY = random.randint(10,100)
+alienX_change = 0.2
+alienY_change = 40
 
 
 def player(x, y):  # playerX has become x here and playerY has become y here ... and this x and y will go down ... uss din tu bhai toda confuse ho gya tha fir defination in python search kr k dekha tah yaad aaya
@@ -60,16 +60,17 @@ while running:  # this loop exits when closed button is pressed
         # if we press red cross then the while loop should exit and we can do that by making while False
         if event.type == pygame.QUIT:  # MAKE SURE YOU WRITE QUIT IN CAPITAL LETTERS
             running = False
+            break
 
         if event.type == pygame.KEYDOWN:  # key down  means pressing the key and key up means releasing the key
             # print('A key is pressed')
             if event.key == pygame.K_LEFT:
                 #print('LEFT arrow is pressed')
-                playerX_change = -0.4
+                playerX_change = -0.6
 
             if event.key == pygame.K_RIGHT:
                 # print('RIGHT arrow is pressed')
-                playerX_change = 0.4
+                playerX_change = 0.6
 
         if event.type == pygame.KEYUP:          # releasing the key ... which was either right or left
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
@@ -77,6 +78,8 @@ while running:  # this loop exits when closed button is pressed
 
                 #  print('keystroke has been released')
 
+
+#    PLAYER
     playerX = playerX + playerX_change
     # playerY = playerY + playerY_change
 
@@ -85,6 +88,20 @@ while running:  # this loop exits when closed button is pressed
         playerX = 0
     elif playerX >= 736:  # 800-64=736
         playerX = 736
+
+#    ALIEN
+    # alienX = alienX + alienX_change
+    # ADDING BOUNDARIES FOR OUR ALIEN
+    if alienX <= 0:
+        alienX_change = 0.2
+        alienY = alienY + alienY_change
+
+    elif alienX >= 736:  # 800-64=736
+        alienX_change = -0.2
+        alienY = alienY + alienY_change
+
+
+    alienX = alienX + alienX_change
 
     player(playerX, playerY)
     alien(alienX, alienY)
