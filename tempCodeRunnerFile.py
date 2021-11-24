@@ -4,8 +4,12 @@ import random
 # to initialize
 pygame.init()
 
-# create the screen
-# TWO BRACKETS HERE #width,height #(x,y)
+# BACKGROUND
+background = pygame.image.load('background.png')
+
+
+
+# create the screen # TWO BRACKETS HERE #width,height #(x,y)
 screen = pygame.display.set_mode((800, 600))
 
 # TITEL AND ICON
@@ -46,6 +50,9 @@ while running:  # this loop exits when closed button is pressed
 
     #        RED GREEN BLUE -- these values goes from zero to 255
     screen.fill((0, 0, 0))
+
+#   BACKGROUND IMAGE ADDING
+    screen.blit(background, (0,0))
 
     # '''playerX = playerX + 0.1 #adding 0.1 in x so image will move RHS'''
 
