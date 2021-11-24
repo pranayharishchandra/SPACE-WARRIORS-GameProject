@@ -4,7 +4,7 @@ import pygame
 pygame.init()
 
 #create the screen
-screen = pygame.display.set_mode((800, 600)) #TWO BRACKETS HERE #width,height #x,y
+screen = pygame.display.set_mode((800, 600)) #TWO BRACKETS HERE #width,height #(x,y)
 
 #TITEL AND ICON
 pygame.display.set_caption('Space Warriors')#use 32*32 for icons
@@ -16,8 +16,8 @@ player_image = pygame.image.load('plane_64bit.png')#don't forget to write png he
 playerX = 360
 playerY = 450
 
-def player():
-    screen.blit(player_image, (playerX, playerY)) #blit basically means to draw  #put playerX, playerY  in bracket  (playerX, playerY)like this
+def player(x,y): #playerX has become x here and playerY has become y here ... and this x and y will go down ... uss din tu bhai toda confuse ho gya tha fir defination in python search kr k dekha tah yaad aaya 
+    screen.blit(player_image, (x, y)) #blit basically means to draw  #put playerX, playerY  in bracket  (playerX, playerY)like this
 
 '''place icon in the same folder where freecodecampgame.py is ... (don't put this inside some new folder )'''
 
@@ -29,6 +29,11 @@ while running: #this loop exits when closed button is pressed
     #        RED GREEN BLUE -- these values goes from zero to 255
     screen.fill((0,0,0))
 
+
+    playerX = playerX + 0.1
+
+    #because screen comes first so we have written screen first ... then over it below things/images will get added so written below this
+
     # pass   #this much will hang the window ... program is in while loop and never ends so now you have to add QUIT 
     #anyting happening inside game window is an event even pressing of close button is also an event in pygame
     #we hve to make sure we exit this loop when closed button is pressed
@@ -39,5 +44,5 @@ while running: #this loop exits when closed button is pressed
         if event.type ==pygame.QUIT:#MAKE SURE YOU WRITE QUIT IN CAPITAL LETTERS
             running = False
 
-    player()
+    player(playerX, playerY)
     pygame.display.update() # You have to write this to upadate anything and everything in the game window
