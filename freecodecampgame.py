@@ -15,6 +15,8 @@ pygame.display.set_icon(icon)
 player_image = pygame.image.load('plane_64bit.png')#don't forget to write png here
 playerX = 360
 playerY = 450
+playerX_change = 0
+playerY_change = 0
 
 def player(x,y): #playerX has become x here and playerY has become y here ... and this x and y will go down ... uss din tu bhai toda confuse ho gya tha fir defination in python search kr k dekha tah yaad aaya 
     screen.blit(player_image, (x, y)) #blit basically means to draw  #put playerX, playerY  in bracket  (playerX, playerY)like this
@@ -30,8 +32,6 @@ while running: #this loop exits when closed button is pressed
     screen.fill((0,0,0))
 
 
-    playerX = playerX + 0.1
-
     #because screen comes first so we have written screen first ... then over it below things/images will get added so written below this
 
     # pass   #this much will hang the window ... program is in while loop and never ends so now you have to add QUIT 
@@ -43,6 +43,21 @@ while running: #this loop exits when closed button is pressed
         #if we press red cross then the while loop should exit and we can do that by making while False
         if event.type ==pygame.QUIT:#MAKE SURE YOU WRITE QUIT IN CAPITAL LETTERS
             running = False
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                playerX_change = -0.1
+            if event.key == pygame.K_RIGHT:
+                playerX_change = 0.1
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT :
+                playerX_change = 0.1
+
+    playerX = playerX + playerX_change
+    playerY = playerY + playerY_change
+    
+
+        
 
     player(playerX, playerY)
     pygame.display.update() # You have to write this to upadate anything and everything in the game window
